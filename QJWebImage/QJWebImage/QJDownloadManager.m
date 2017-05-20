@@ -104,9 +104,9 @@ static QJDownloadManager * _currentManager ;
     BOOL moveSucceed = [fileManeger moveItemAtPath:location.path toPath:imageName];
     
     NSLog(@">>>>>> 下载的文件移动 %@",moveSucceed ? @"成功":@"失败");
-    if (!moveSucceed) {
-        imageName = location.absoluteString ;
-    }
+//    if (!moveSucceed) {
+//        imageName = location.absoluteString ;
+//    }
     
     UIImage * image = [fileManeger getImageWithImageName:imageName];
 

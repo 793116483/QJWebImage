@@ -30,6 +30,16 @@ static QJFileManeger * _currentFileManager ;
     return _currentFileManager;
 }
 
+-(void)setRootFolderName:(NSString *)rootFolderName
+{
+    _rootFolderName = rootFolderName ;
+    
+    NSString * path = [[QJFileManeger documentPath] stringByAppendingFormat:@"/%@",self.rootFolderName];
+    if (![self folderPathIsExist:path]) {
+        [self.fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+}
+
 +(NSString *)documentPath
 {
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
