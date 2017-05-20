@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F2BABBB41ECEF613006C94F4 /* QJWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BABBB31ECEF613006C94F4 /* QJWebImageManager.m */; };
+		F2BABBB71ECEF911006C94F4 /* UIImageView+QJWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BABBB61ECEF911006C94F4 /* UIImageView+QJWebImage.m */; };
 		F2D66C251ECED09800D5D631 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D66C241ECED09800D5D631 /* main.m */; };
 		F2D66C281ECED09800D5D631 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D66C271ECED09800D5D631 /* AppDelegate.m */; };
 		F2D66C2B1ECED09800D5D631 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D66C2A1ECED09800D5D631 /* ViewController.m */; };
@@ -16,6 +18,9 @@
 		F2D66C361ECED09800D5D631 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2D66C341ECED09800D5D631 /* LaunchScreen.storyboard */; };
 		F2D66C411ECED09800D5D631 /* QJWebImageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D66C401ECED09800D5D631 /* QJWebImageTests.m */; };
 		F2D66C4C1ECED09800D5D631 /* QJWebImageUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D66C4B1ECED09800D5D631 /* QJWebImageUITests.m */; };
+		F2D66C5C1ECED42700D5D631 /* QJFileManeger.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D66C5B1ECED42700D5D631 /* QJFileManeger.m */; };
+		F2D66C5F1ECED45E00D5D631 /* QJImagePathHandle.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D66C5E1ECED45E00D5D631 /* QJImagePathHandle.m */; };
+		F2D66C621ECED48400D5D631 /* QJDownloadManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D66C611ECED48400D5D631 /* QJDownloadManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F2BABBB21ECEF613006C94F4 /* QJWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJWebImageManager.h; sourceTree = "<group>"; };
+		F2BABBB31ECEF613006C94F4 /* QJWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJWebImageManager.m; sourceTree = "<group>"; };
+		F2BABBB51ECEF911006C94F4 /* UIImageView+QJWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QJWebImage.h"; sourceTree = "<group>"; };
+		F2BABBB61ECEF911006C94F4 /* UIImageView+QJWebImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+QJWebImage.m"; sourceTree = "<group>"; };
+		F2BABBB81ECEFC9C006C94F4 /* CommentHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentHeader.h; sourceTree = "<group>"; };
 		F2D66C201ECED09800D5D631 /* QJWebImage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QJWebImage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D66C241ECED09800D5D631 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F2D66C261ECED09800D5D631 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -53,6 +63,12 @@
 		F2D66C471ECED09800D5D631 /* QJWebImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QJWebImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2D66C4B1ECED09800D5D631 /* QJWebImageUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QJWebImageUITests.m; sourceTree = "<group>"; };
 		F2D66C4D1ECED09800D5D631 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2D66C5A1ECED42700D5D631 /* QJFileManeger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJFileManeger.h; sourceTree = "<group>"; };
+		F2D66C5B1ECED42700D5D631 /* QJFileManeger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJFileManeger.m; sourceTree = "<group>"; };
+		F2D66C5D1ECED45E00D5D631 /* QJImagePathHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJImagePathHandle.h; sourceTree = "<group>"; };
+		F2D66C5E1ECED45E00D5D631 /* QJImagePathHandle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJImagePathHandle.m; sourceTree = "<group>"; };
+		F2D66C601ECED48400D5D631 /* QJDownloadManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJDownloadManager.h; sourceTree = "<group>"; };
+		F2D66C611ECED48400D5D631 /* QJDownloadManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJDownloadManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +119,7 @@
 		F2D66C221ECED09800D5D631 /* QJWebImage */ = {
 			isa = PBXGroup;
 			children = (
+				F2D66C591ECED3A100D5D631 /* QJWebImage */,
 				F2D66C261ECED09800D5D631 /* AppDelegate.h */,
 				F2D66C271ECED09800D5D631 /* AppDelegate.m */,
 				F2D66C291ECED09800D5D631 /* ViewController.h */,
@@ -141,6 +158,24 @@
 				F2D66C4D1ECED09800D5D631 /* Info.plist */,
 			);
 			path = QJWebImageUITests;
+			sourceTree = "<group>";
+		};
+		F2D66C591ECED3A100D5D631 /* QJWebImage */ = {
+			isa = PBXGroup;
+			children = (
+				F2BABBB81ECEFC9C006C94F4 /* CommentHeader.h */,
+				F2D66C5A1ECED42700D5D631 /* QJFileManeger.h */,
+				F2D66C5B1ECED42700D5D631 /* QJFileManeger.m */,
+				F2D66C5D1ECED45E00D5D631 /* QJImagePathHandle.h */,
+				F2D66C5E1ECED45E00D5D631 /* QJImagePathHandle.m */,
+				F2D66C601ECED48400D5D631 /* QJDownloadManager.h */,
+				F2D66C611ECED48400D5D631 /* QJDownloadManager.m */,
+				F2BABBB21ECEF613006C94F4 /* QJWebImageManager.h */,
+				F2BABBB31ECEF613006C94F4 /* QJWebImageManager.m */,
+				F2BABBB51ECEF911006C94F4 /* UIImageView+QJWebImage.h */,
+				F2BABBB61ECEF911006C94F4 /* UIImageView+QJWebImage.m */,
+			);
+			path = QJWebImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +317,11 @@
 				F2D66C2B1ECED09800D5D631 /* ViewController.m in Sources */,
 				F2D66C281ECED09800D5D631 /* AppDelegate.m in Sources */,
 				F2D66C251ECED09800D5D631 /* main.m in Sources */,
+				F2D66C5F1ECED45E00D5D631 /* QJImagePathHandle.m in Sources */,
+				F2D66C5C1ECED42700D5D631 /* QJFileManeger.m in Sources */,
+				F2BABBB41ECEF613006C94F4 /* QJWebImageManager.m in Sources */,
+				F2D66C621ECED48400D5D631 /* QJDownloadManager.m in Sources */,
+				F2BABBB71ECEF911006C94F4 /* UIImageView+QJWebImage.m in Sources */,
 				F2D66C311ECED09800D5D631 /* QJWebImage.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -520,6 +560,7 @@
 				F2D66C521ECED09800D5D631 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F2D66C531ECED09800D5D631 /* Build configuration list for PBXNativeTarget "QJWebImageTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +569,7 @@
 				F2D66C551ECED09800D5D631 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F2D66C561ECED09800D5D631 /* Build configuration list for PBXNativeTarget "QJWebImageUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +578,7 @@
 				F2D66C581ECED09800D5D631 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
