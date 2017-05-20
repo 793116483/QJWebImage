@@ -16,7 +16,7 @@
 
 +(NSString *)documentPath ;
 /**
-    根文件名 默认为 @"QJWebImageFile"
+    图片缓存的根文件名 默认为 @"QJWebImageFile"
  */
 @property (nonatomic , copy)NSString * rootFolderName ;
 
@@ -30,7 +30,9 @@
 -(BOOL)folderPathIsExist:(NSString *)folderPath ;
 -(BOOL)fileIsExist:(NSString *)fileName ;
 
+// 获取文件路径根据图片名称
 -(NSString *)getImagePathWithImageName:(NSString *)imageName ;
+// 获取图片根据图片名称
 -(UIImage *)getImageWithImageName:(NSString *)imageName ;
 
 @end

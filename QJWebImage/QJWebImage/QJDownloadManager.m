@@ -56,6 +56,7 @@ static QJDownloadManager * _currentManager ;
 {
     self.imageURL = imageURL ;
     
+    // 读缓存
     NSString * imageName = [QJImagePathHandle imageNameForBase64Handle:self.imageURL.absoluteString];
     QJFileManeger * fileManeger = [QJFileManeger defaultManeger];
     UIImage * cachImage = [fileManeger getImageWithImageName:imageName] ;
@@ -70,6 +71,7 @@ static QJDownloadManager * _currentManager ;
         return ;
     }
     
+    // 下载图片
     NSURLSession * session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue new]];
     NSURLRequest * request = [NSURLRequest requestWithURL:imageURL cachePolicy:5 timeoutInterval:60.0f];
     NSURLSessionDownloadTask * downloadTask =  [session downloadTaskWithRequest:request];

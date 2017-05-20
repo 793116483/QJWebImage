@@ -38,11 +38,8 @@ static QJFileManeger * _currentFileManager ;
 -(BOOL)moveItemAtPath:(NSString *)atPath toPath:(NSString *)toPath
 {
     NSString * path = [[QJFileManeger documentPath] stringByAppendingFormat:@"/%@/%@",self.rootFolderName,toPath];
-    NSError * error = [NSError new];
-    BOOL lll = [self.fileManager moveItemAtPath:atPath toPath:path error:&error] ;
-    
-    NSLog(@"%@",error.userInfo);
-    return lll;
+
+    return [self.fileManager moveItemAtPath:atPath toPath:path error:nil] ;
 }
 -(BOOL)moveItemAtURL:(NSURL *)atURL toURL:(NSURL *)toURL
 {

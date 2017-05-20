@@ -23,8 +23,6 @@
     [self qj_setImageWithUrlStr:imageUrlStr downloadProgressing:nil downloadFinished:nil];
 }
 
-static const char ImageKey = '\0';
-
 -(void)qj_setImageWithURL:(NSURL *)imageURL downloadProgressing:(DownloadProgressing)downloadProgressing downloadFinished:(DownloadFinished)downloadFinished
 {
     QJWeakSelf ;
