@@ -24,7 +24,13 @@
 -(BOOL)moveItemAtPath:(NSString *)atPath toPath:(NSString *)toPath ;
 -(BOOL)moveItemAtURL:(NSURL *)atURL toURL:(NSURL *)toURL ;
 
+// 创建文件
+-(BOOL)createFileAtFileNameIfNeed:(NSString *)fileName ;
+
+// 删除文件
 -(BOOL)removeImageWithImageName:(NSString *)imageName ;
+-(BOOL)removeFolder:(NSString *)folderName ;
+-(BOOL)removeAllImageCache;
 
 // 文件是否存在
 -(BOOL)folderPathIsExist:(NSString *)folderPath ;

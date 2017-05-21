@@ -13,7 +13,7 @@
 
 +(QJDownloadManager *)downloadManagerSetProgressing:(DownloadProgressing)downloadProgressing downloadFinished:(DownloadFinished)downloadFinished
 {
-    QJDownloadManager * downloadManager = [QJDownloadManager downloadManager];
+    QJDownloadManager * downloadManager = [QJDownloadManager defaultManeger];
     
     [downloadManager setDownloadProgressing:downloadProgressing];
     [downloadManager setDownloadFinished:downloadFinished];

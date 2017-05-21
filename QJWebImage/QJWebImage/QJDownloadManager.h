@@ -12,7 +12,7 @@
 
 @interface QJDownloadManager : NSObject
 
-+(instancetype)downloadManager;
++(instancetype)defaultManeger;
 
 -(void)startDownloadImageWithURL:(NSURL *)imageURL ;
 -(void)startDownloadImageWithPath:(NSString *)imagePath ;

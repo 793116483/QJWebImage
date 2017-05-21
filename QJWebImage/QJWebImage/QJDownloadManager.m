@@ -26,7 +26,7 @@
 
 static QJDownloadManager * _currentManager ;
 
-+(instancetype)downloadManager
++(instancetype)defaultManeger
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -58,9 +58,12 @@ static QJDownloadManager * _currentManager ;
     
     // 读缓存
     NSString * imageName = [QJImagePathHandle imageNameForBase64Handle:self.imageURL.absoluteString];
-    QJFileManeger * fileManeger = [QJFileManeger defaultManeger];
-    UIImage * cachImage = [fileManeger getImageWithImageName:imageName] ;
-    if (cachImage) {
+    
+    if ([[QJFileManeger defaultManeger] fileIsExist:imageName]) {
+        
+        QJFileManeger * fileManeger = [QJFileManeger defaultManeger];
+        UIImage * cachImage = [fileManeger getImageWithImageName:imageName] ;
+        
         if (self.progressingBlock) {
             self.progressingBlock(1.0, 1.0, 1.0);
         }
@@ -99,22 +102,21 @@ static QJDownloadManager * _currentManager ;
     NSString * imageName = [QJImagePathHandle imageNameForBase64Handle:self.imageURL.absoluteString];
     
     QJFileManeger * fileManeger = [QJFileManeger defaultManeger];
+    NSString * imagePath = [fileManeger getImagePathWithImageName:imageName];
     
-    // 移动位置
-    BOOL moveSucceed = [fileManeger moveItemAtPath:location.path toPath:imageName];
+    // 把下载好的 图片从 location 移动到 imagePath 位置里
+    BOOL moveSucceed = [fileManeger moveItemAtPath:location.path toPath:imagePath];
     
     NSLog(@">>>>>> 下载的文件移动 %@",moveSucceed ? @"成功":@"失败");
-//    if (!moveSucceed) {
-//        imageName = location.absoluteString ;
-//    }
     
+    // 通过 imageName 获取图片
     UIImage * image = [fileManeger getImageWithImageName:imageName];
 
     if (self.finishedBlock) {
        
         dispatch_async(dispatch_get_main_queue(), ^{
             
-            self.finishedBlock(image, [fileManeger getImagePathWithImageName:imageName]) ;
+            self.finishedBlock(image, imagePath) ;
         });
     }
 

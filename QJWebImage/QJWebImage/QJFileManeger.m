@@ -17,6 +17,8 @@
 @implementation QJFileManeger
 
 static QJFileManeger * _currentFileManager ;
+#define kCommonFolderName @"QJWebImageCache"
+#define kRootFolderName @"QJWebImageFile"
 
 +(instancetype)defaultManeger
 {
@@ -24,20 +26,10 @@ static QJFileManeger * _currentFileManager ;
     dispatch_once(&onceToken, ^{
         _currentFileManager = [[self alloc] init];
         _currentFileManager.fileManager = [NSFileManager defaultManager];
-        _currentFileManager.rootFolderName = @"QJWebImageFile" ;
+        _currentFileManager.rootFolderName = kRootFolderName ;
     });
 
     return _currentFileManager;
-}
-
--(void)setRootFolderName:(NSString *)rootFolderName
-{
-    _rootFolderName = rootFolderName ;
-    
-    NSString * path = [[QJFileManeger documentPath] stringByAppendingFormat:@"/%@",self.rootFolderName];
-    if (![self folderPathIsExist:path]) {
-        [self.fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
-    }
 }
 
 +(NSString *)documentPath
@@ -45,44 +37,127 @@ static QJFileManeger * _currentFileManager ;
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 }
 
+-(NSString *)commonFolderPath
+{
+    return [[QJFileManeger documentPath] stringByAppendingPathComponent:kCommonFolderName];
+}
+
+-(NSString *)currentCacheFolder
+{
+    return [[self commonFolderPath] stringByAppendingPathComponent:self.rootFolderName];
+}
+
+-(void)setRootFolderName:(NSString *)rootFolderName
+{
+    if (rootFolderName) {
+        _rootFolderName = rootFolderName ;
+    }
+    
+    [self createFileAtFileNameIfNeed:rootFolderName];
+}
+
 -(BOOL)moveItemAtPath:(NSString *)atPath toPath:(NSString *)toPath
 {
-    NSString * path = [[QJFileManeger documentPath] stringByAppendingFormat:@"/%@/%@",self.rootFolderName,toPath];
-
-    return [self.fileManager moveItemAtPath:atPath toPath:path error:nil] ;
+    if (!atPath || !toPath) {
+        return NO ;
+    }
+    
+    return [self.fileManager moveItemAtPath:atPath toPath:toPath error:nil] ;
 }
 -(BOOL)moveItemAtURL:(NSURL *)atURL toURL:(NSURL *)toURL
 {
+    if (!atURL.path || !toURL.path) {
+        return NO ;
+    }
+    
     return [self.fileManager moveItemAtURL:atURL toURL:toURL error:nil];
+}
+
+-(BOOL)createFileAtFileNameIfNeed:(NSString *)fileName
+{
+    if (!fileName) {
+        return NO ;
+    }
+    
+    NSString * path = [[self commonFolderPath] stringByAppendingPathComponent:fileName];
+    
+    if (![self folderPathIsExist:path]) {
+        return [self.fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    else{
+        return YES ;
+    }
 }
 
 -(BOOL)removeImageWithImageName:(NSString *)imageName
 {
-    NSString * path = [[QJFileManeger documentPath] stringByAppendingFormat:@"/%@/%@",self.rootFolderName,imageName];
+    if (!imageName) {
+        return NO ;
+    }
+    
+    NSString * path = [[self currentCacheFolder] stringByAppendingPathComponent:imageName];
+    
+    if (![self fileIsExist:path]) {
+        return YES ;
+    }
+    
    return [self.fileManager removeItemAtPath:path error:nil];
+}
+
+-(BOOL)removeFolder:(NSString *)folderName
+{
+    if (!folderName) {
+        return NO ;
+    }
+    
+    NSString * path = [[self commonFolderPath] stringByAppendingPathComponent:folderName];
+    
+    if (![self folderPathIsExist:path]) {
+        return YES ;
+    }
+    
+    return [self.fileManager removeItemAtPath:path error:nil];
+}
+
+-(BOOL)removeAllImageCache
+{
+    if (![self folderPathIsExist:[self commonFolderPath]]) {
+        return YES ;
+    }
+    return [self.fileManager removeItemAtPath:[self commonFolderPath] error:nil];
 }
 
 -(BOOL)folderPathIsExist:(NSString *)folderPath
 {
+    if (!folderPath) {
+        return NO ;
+    }
+    
     return [self.fileManager fileExistsAtPath:folderPath];
 }
 
 -(BOOL)fileIsExist:(NSString *)fileName
 {
-    NSString * path = [[QJFileManeger documentPath] stringByAppendingFormat:@"/%@/%@",self.rootFolderName,fileName];
+    if (!fileName) {
+        return NO ;
+    }
+    
+    NSString * path = [[self currentCacheFolder] stringByAppendingPathComponent:fileName];
 
     return [self.fileManager fileExistsAtPath:path];
 }
 
 -(NSString *)getImagePathWithImageName:(NSString *)imageName
 {
-    if (![self fileIsExist:imageName]) {
+    if (!imageName) {
         return nil ;
     }
     
-    NSString * path = [[QJFileManeger documentPath] stringByAppendingFormat:@"/%@/%@",self.rootFolderName,imageName];
-
-    return path ;
+    [self createFileAtFileNameIfNeed:self.rootFolderName];
+    
+    NSString * imagePath = [[self currentCacheFolder] stringByAppendingPathComponent:imageName] ;
+    
+    return imagePath;
 }
 
 -(UIImage *)getImageWithImageName:(NSString *)imageName
