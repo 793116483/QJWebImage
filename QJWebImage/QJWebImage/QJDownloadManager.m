@@ -63,9 +63,10 @@ static QJDownloadManager * _currentManager ;
         
         QJFileManeger * fileManeger = [QJFileManeger defaultManeger];
         UIImage * cachImage = [fileManeger getImageWithImageName:imageName] ;
+        NSInteger fileSize = [fileManeger imageFileSizeWithImageName:imageName];
         
         if (self.progressingBlock) {
-            self.progressingBlock(1.0, 1.0, 1.0);
+            self.progressingBlock((NSInteger)(fileSize / 1000.0 + 0.5), (NSInteger)(fileSize / 1000.0 + 0.5), (NSInteger)(fileSize / 1000.0 + 0.5));
         }
         if (self.finishedBlock) {
             self.finishedBlock(cachImage, [fileManeger getImagePathWithImageName:imageName]);
@@ -90,7 +91,7 @@ static QJDownloadManager * _currentManager ;
     if (self.progressingBlock) { // 下载进度
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.progressingBlock(bytesWritten, totalBytesWritten, totalBytesExpectedToWrite);
+            self.progressingBlock((NSInteger)(bytesWritten / 1000.0 + 0.5), (NSInteger)(totalBytesWritten / 1000.0 + 0.5), (NSInteger)(totalBytesExpectedToWrite / 1000.0 + 0.5));
         });
     }
     

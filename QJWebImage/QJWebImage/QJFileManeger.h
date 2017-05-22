@@ -14,7 +14,8 @@
 // FolderName 如 QJWebImagesFile
 +(instancetype)defaultManeger;
 
-+(NSString *)documentPath ;
+// 缓存的公共存储文件路径
++(NSString *)commonFolderPath ;
 /**
     图片缓存的根文件名 默认为 @"QJWebImageFile"
  */
@@ -35,6 +36,10 @@
 // 文件是否存在
 -(BOOL)folderPathIsExist:(NSString *)folderPath ;
 -(BOOL)fileIsExist:(NSString *)fileName ;
+
+// 获取文件的大小
+-(NSInteger)fileSizeWithFilePath:(NSString *)filePath ;
+-(NSInteger)imageFileSizeWithImageName:(NSString *)imageName ;
 
 // 获取文件路径根据图片名称
 -(NSString *)getImagePathWithImageName:(NSString *)imageName ;

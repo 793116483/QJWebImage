@@ -147,6 +147,22 @@ static QJFileManeger * _currentFileManager ;
     return [self.fileManager fileExistsAtPath:path];
 }
 
+-(NSInteger)fileSizeWithFilePath:(NSString *)filePath
+{
+    if (![self folderPathIsExist:filePath]) {
+        return 0 ;
+    }
+    
+    return [[self.fileManager attributesOfItemAtPath:filePath error:nil] fileSize];
+}
+
+-(NSInteger)imageFileSizeWithImageName:(NSString *)imageName
+{
+    NSString * imagePath = [[self currentCacheFolder] stringByAppendingPathComponent:imageName];
+    
+    return [self fileSizeWithFilePath:imagePath];
+}
+
 -(NSString *)getImagePathWithImageName:(NSString *)imageName
 {
     if (!imageName) {
@@ -166,7 +182,7 @@ static QJFileManeger * _currentFileManager ;
     if (!path) {
         return nil ;
     }
-    
+
     UIImage * image = [UIImage imageWithContentsOfFile:path];
     
     return image ;
