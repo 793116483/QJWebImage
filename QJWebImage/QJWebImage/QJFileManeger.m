@@ -95,7 +95,7 @@ static QJFileManeger * _currentFileManager ;
         return NO ;
     }
     
-    NSString * path = [[self currentCacheFolder] stringByAppendingPathComponent:imageName];
+    NSString * path = [self getImagePathWithImageName:imageName];
     
     if (![self fileIsExist:path]) {
         return YES ;
