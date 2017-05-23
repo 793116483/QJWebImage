@@ -20,17 +20,17 @@
 
     UIImageView * imageView = [[UIImageView alloc] init];
     imageView.backgroundColor = [UIColor whiteColor];
-    imageView.frame = CGRectMake(10, 100, 300, 100);
+    imageView.frame = CGRectMake(10, 100, self.view.frame.size.width - 20, 150);
     [self.view addSubview:imageView];
     
     UIImageView * imageView2 = [[UIImageView alloc] init];
     imageView2.backgroundColor = [UIColor whiteColor];
-    imageView2.frame = CGRectMake(10, 210, 300, 100);
+    imageView2.frame = CGRectMake(10, 260, self.view.frame.size.width - 20, 150);
     [self.view addSubview:imageView2];
     
     UIImageView * imageView3 = [[UIImageView alloc] init];
     imageView3.backgroundColor = [UIColor whiteColor];
-    imageView3.frame = CGRectMake(10, 320, 300, 100);
+    imageView3.frame = CGRectMake(10, 420, self.view.frame.size.width - 20, 150);
     [self.view addSubview:imageView3];
     
     NSString * testImageURL1 = @"http://www.bz55.com/uploads/allimg/150417/139-15041G02614.jpg";
