@@ -15,7 +15,7 @@
 @property (nonatomic , copy)NSString * imagePath ;
 @property (nonatomic , strong)NSURL * imageURL ;
 
-
+@property (nonatomic , strong)NSOperationQueue * queue ;
 
 @property (nonatomic , copy)QJDownloadProgressing progressingBlock ;
 @property (nonatomic , copy)QJDownloadFinished finishedBlock ;
@@ -24,16 +24,9 @@
 
 @implementation QJDownloadManager
 
-static QJDownloadManager * _currentManager ;
-
-+(instancetype)defaultManeger
++(instancetype)downloadManeger
 {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _currentManager = [[self alloc] init];
-    });
-    
-    return _currentManager;
+    return [[self alloc] init];
 }
 
 -(void)setDownloadProgressing:(QJDownloadProgressing)downloadProgressing
@@ -76,7 +69,10 @@ static QJDownloadManager * _currentManager ;
     }
     
     // 下载图片
-    NSURLSession * session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue new]];
+    if (!self.queue) {
+        self.queue = [NSOperationQueue new] ;
+    }
+    NSURLSession * session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration] delegate:self delegateQueue:self.queue];
     NSURLRequest * request = [NSURLRequest requestWithURL:imageURL cachePolicy:5 timeoutInterval:60.0f];
     NSURLSessionDownloadTask * downloadTask =  [session downloadTaskWithRequest:request];
     
@@ -100,6 +96,8 @@ static QJDownloadManager * _currentManager ;
 // 下载完成
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
+    [downloadTask cancel];
+    
     NSString * imageName = [QJImagePathHandle imageNameForBase64Handle:self.imageURL.absoluteString];
     
     QJFileManeger * fileManeger = [QJFileManeger defaultManeger];

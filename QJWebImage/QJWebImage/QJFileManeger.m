@@ -37,14 +37,14 @@ static QJFileManeger * _currentFileManager ;
     return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 }
 
--(NSString *)commonFolderPath
++(NSString *)commonFolderPath
 {
-    return [[QJFileManeger documentPath] stringByAppendingPathComponent:kCommonFolderName];
+    return [[self documentPath] stringByAppendingPathComponent:kCommonFolderName];
 }
 
 -(NSString *)currentCacheFolder
 {
-    return [[self commonFolderPath] stringByAppendingPathComponent:self.rootFolderName];
+    return [[QJFileManeger commonFolderPath] stringByAppendingPathComponent:self.rootFolderName];
 }
 
 -(void)setRootFolderName:(NSString *)rootFolderName
@@ -79,7 +79,7 @@ static QJFileManeger * _currentFileManager ;
         return NO ;
     }
     
-    NSString * path = [[self commonFolderPath] stringByAppendingPathComponent:fileName];
+    NSString * path = [[QJFileManeger commonFolderPath] stringByAppendingPathComponent:fileName];
     
     if (![self folderPathIsExist:path]) {
         return [self.fileManager createDirectoryAtPath:path withIntermediateDirectories:YES attributes:nil error:nil];
@@ -110,7 +110,7 @@ static QJFileManeger * _currentFileManager ;
         return NO ;
     }
     
-    NSString * path = [[self commonFolderPath] stringByAppendingPathComponent:folderName];
+    NSString * path = [[QJFileManeger commonFolderPath] stringByAppendingPathComponent:folderName];
     
     if (![self folderPathIsExist:path]) {
         return YES ;
@@ -121,10 +121,10 @@ static QJFileManeger * _currentFileManager ;
 
 -(BOOL)removeAllImageCache
 {
-    if (![self folderPathIsExist:[self commonFolderPath]]) {
+    if (![self folderPathIsExist:[QJFileManeger commonFolderPath]]) {
         return YES ;
     }
-    return [self.fileManager removeItemAtPath:[self commonFolderPath] error:nil];
+    return [self.fileManager removeItemAtPath:[QJFileManeger commonFolderPath] error:nil];
 }
 
 -(BOOL)folderPathIsExist:(NSString *)folderPath

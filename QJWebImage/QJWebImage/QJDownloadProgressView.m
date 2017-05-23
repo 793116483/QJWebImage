@@ -21,7 +21,7 @@
 
 #define kBorderWidth 3
 #define kStrokeColor [UIColor whiteColor] 
-#define kCircleColor QJColorA(205, 205, 205, 1.0)
+#define kCircleColor QJColorA(210, 210, 210, 1.0)
 
 @implementation QJDownloadProgressView
 
