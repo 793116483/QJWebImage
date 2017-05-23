@@ -15,7 +15,7 @@
 @property (nonatomic , copy)NSString * imagePath ;
 @property (nonatomic , strong)NSURL * imageURL ;
 
-@property (nonatomic , strong)NSURLSession * session ;
+@property (nonatomic , strong)NSOperationQueue * queue ;
 
 @property (nonatomic , copy)QJDownloadProgressing progressingBlock ;
 @property (nonatomic , copy)QJDownloadFinished finishedBlock ;
@@ -69,13 +69,12 @@
     }
     
     // 下载图片
-    if (!self.session) {
-        NSURLSession * session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration] delegate:self delegateQueue:[NSOperationQueue new]];
-
-        self.session =  session;
+    if (!self.queue) {
+        self.queue = [NSOperationQueue new] ;
     }
+    NSURLSession * session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration] delegate:self delegateQueue:self.queue];
     NSURLRequest * request = [NSURLRequest requestWithURL:imageURL cachePolicy:5 timeoutInterval:60.0f];
-    NSURLSessionDownloadTask * downloadTask =  [self.session downloadTaskWithRequest:request];
+    NSURLSessionDownloadTask * downloadTask =  [session downloadTaskWithRequest:request];
     
     // 开始请求
     [downloadTask resume];
@@ -97,6 +96,7 @@
 // 下载完成
 -(void)URLSession:(NSURLSession *)session downloadTask:(NSURLSessionDownloadTask *)downloadTask didFinishDownloadingToURL:(NSURL *)location
 {
+    [downloadTask cancel];
     
     NSString * imageName = [QJImagePathHandle imageNameForBase64Handle:self.imageURL.absoluteString];
     
@@ -116,10 +116,6 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             
             self.finishedBlock(image, imagePath) ;
-            
-            [self.session finishTasksAndInvalidate];
-            [self.session invalidateAndCancel];
-            self.session = nil ;
         });
     }
 
