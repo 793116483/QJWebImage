@@ -19,8 +19,8 @@
 
 // 设置回调的 block
 // 1.下载进度
--(void)setDownloadProgressing:(DownloadProgressing)downloadProgressing ;
+-(void)setDownloadProgressing:(QJDownloadProgressing)downloadProgressing ;
 // 2.下载完成
--(void)setDownloadFinished:(DownloadFinished)downloadFinished ;
+-(void)setDownloadFinished:(QJDownloadFinished)downloadFinished ;
 
 @end

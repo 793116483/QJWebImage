@@ -11,7 +11,7 @@
 
 @implementation QJWebImageManager
 
-+(QJDownloadManager *)downloadManagerSetProgressing:(DownloadProgressing)downloadProgressing downloadFinished:(DownloadFinished)downloadFinished
++(QJDownloadManager *)downloadManagerSetProgressing:(QJDownloadProgressing)downloadProgressing downloadFinished:(QJDownloadFinished)downloadFinished
 {
     QJDownloadManager * downloadManager = [QJDownloadManager defaultManeger];
     
@@ -21,14 +21,14 @@
     return downloadManager ;
 }
 
-+(void)startDownloadImageWithUrlStr:(NSString *)imageUrlStr downloadProgressing:(DownloadProgressing)downloadProgressing downloadFinished:(DownloadFinished)downloadFinished
++(void)startDownloadImageWithUrlStr:(NSString *)imageUrlStr downloadProgressing:(QJDownloadProgressing)downloadProgressing downloadFinished:(QJDownloadFinished)downloadFinished
 {
     QJDownloadManager * downloadManager = [self downloadManagerSetProgressing:downloadProgressing downloadFinished:downloadFinished];
     
     [downloadManager startDownloadImageWithPath:imageUrlStr];
 }
 
-+(void)startDownloadImageWithURL:(NSURL *)imageURL downloadProgressing:(DownloadProgressing)downloadProgressing downloadFinished:(DownloadFinished)downloadFinished
++(void)startDownloadImageWithURL:(NSURL *)imageURL downloadProgressing:(QJDownloadProgressing)downloadProgressing downloadFinished:(QJDownloadFinished)downloadFinished
 {
     QJDownloadManager * downloadManager = [self downloadManagerSetProgressing:downloadProgressing downloadFinished:downloadFinished];
     

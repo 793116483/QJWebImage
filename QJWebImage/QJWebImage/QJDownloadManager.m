@@ -17,8 +17,8 @@
 
 
 
-@property (nonatomic , copy)DownloadProgressing progressingBlock ;
-@property (nonatomic , copy)DownloadFinished finishedBlock ;
+@property (nonatomic , copy)QJDownloadProgressing progressingBlock ;
+@property (nonatomic , copy)QJDownloadFinished finishedBlock ;
 
 @end
 
@@ -36,11 +36,11 @@ static QJDownloadManager * _currentManager ;
     return _currentManager;
 }
 
--(void)setDownloadProgressing:(DownloadProgressing)downloadProgressing
+-(void)setDownloadProgressing:(QJDownloadProgressing)downloadProgressing
 {
     self.progressingBlock = downloadProgressing ;
 }
--(void)setDownloadFinished:(DownloadFinished)downloadFinished
+-(void)setDownloadFinished:(QJDownloadFinished)downloadFinished
 {
     self.finishedBlock = downloadFinished ;
 }

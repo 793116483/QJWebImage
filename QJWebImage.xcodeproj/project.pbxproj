@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F28802BC1ED3D31F0056B257 /* QJDownloadProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = F28802BB1ED3D31F0056B257 /* QJDownloadProgressView.m */; };
 		F2BABBB41ECEF613006C94F4 /* QJWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BABBB31ECEF613006C94F4 /* QJWebImageManager.m */; };
 		F2BABBB71ECEF911006C94F4 /* UIImageView+QJWebImage.m in Sources */ = {isa = PBXBuildFile; fileRef = F2BABBB61ECEF911006C94F4 /* UIImageView+QJWebImage.m */; };
 		F2D66C251ECED09800D5D631 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D66C241ECED09800D5D631 /* main.m */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F28802BA1ED3D31F0056B257 /* QJDownloadProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJDownloadProgressView.h; sourceTree = "<group>"; };
+		F28802BB1ED3D31F0056B257 /* QJDownloadProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJDownloadProgressView.m; sourceTree = "<group>"; };
 		F2BABBB21ECEF613006C94F4 /* QJWebImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QJWebImageManager.h; sourceTree = "<group>"; };
 		F2BABBB31ECEF613006C94F4 /* QJWebImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QJWebImageManager.m; sourceTree = "<group>"; };
 		F2BABBB51ECEF911006C94F4 /* UIImageView+QJWebImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+QJWebImage.h"; sourceTree = "<group>"; };
@@ -172,6 +175,8 @@
 				F2D66C611ECED48400D5D631 /* QJDownloadManager.m */,
 				F2BABBB21ECEF613006C94F4 /* QJWebImageManager.h */,
 				F2BABBB31ECEF613006C94F4 /* QJWebImageManager.m */,
+				F28802BA1ED3D31F0056B257 /* QJDownloadProgressView.h */,
+				F28802BB1ED3D31F0056B257 /* QJDownloadProgressView.m */,
 				F2BABBB51ECEF911006C94F4 /* UIImageView+QJWebImage.h */,
 				F2BABBB61ECEF911006C94F4 /* UIImageView+QJWebImage.m */,
 			);
@@ -314,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F28802BC1ED3D31F0056B257 /* QJDownloadProgressView.m in Sources */,
 				F2D66C2B1ECED09800D5D631 /* ViewController.m in Sources */,
 				F2D66C281ECED09800D5D631 /* AppDelegate.m in Sources */,
 				F2D66C251ECED09800D5D631 /* main.m in Sources */,

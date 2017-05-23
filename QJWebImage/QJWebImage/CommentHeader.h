@@ -16,7 +16,7 @@
     didDownloadSize : 已经下载好了的大小 kb
     needDownloadSize: 图片所占内存的大小 kb
  */
-typedef void(^DownloadProgressing)(CGFloat curDownloadSize , CGFloat didDownloadSize , CGFloat fileSize);
+typedef void(^QJDownloadProgressing)(CGFloat curDownloadSize , CGFloat didDownloadSize , CGFloat fileSize);
 
 /**
     下载图片完成
@@ -24,7 +24,7 @@ typedef void(^DownloadProgressing)(CGFloat curDownloadSize , CGFloat didDownload
     image : 下载好的图片
     filePath : 下载好的图片存储在本地路径
  */
-typedef void(^DownloadFinished)(UIImage * image , NSString * filePath);
+typedef void(^QJDownloadFinished)(UIImage * image , NSString * filePath);
 
 
 #define QJWeakSelf __weak typeof(self) weakSelf = self
