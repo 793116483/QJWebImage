@@ -10,21 +10,21 @@
 #define CommentHeader_h
 
 /**
-    下载图片的进度
- 
-    curDownloadSize : 当前一步下载的大小 kb
-    didDownloadSize : 已经下载好了的大小 kb
-    needDownloadSize: 图片所占内存的大小 kb
+ 下载图片的进度
+
+ @param curDownloadSize 当前一步下载的大小 kb
+ @param didDownloadSize 已经下载好了的大小 kb
+ @param fileSize 图片所占内存的大小 kb
  */
-typedef void(^QJDownloadProgressing)(CGFloat curDownloadSize , CGFloat didDownloadSize , CGFloat fileSize);
+typedef void(^QJDownloadProgressingBlock)(CGFloat curDownloadSize , CGFloat didDownloadSize , CGFloat fileSize);
 
 /**
-    下载图片完成
- 
-    image : 下载好的图片
-    filePath : 下载好的图片存储在本地路径
+ 下载图片完成
+
+ @param image 下载好的图片
+ @param filePath 下载好的图片存储在本地路径
  */
-typedef void(^QJDownloadFinished)(UIImage * image , NSString * filePath);
+typedef void(^QJDownloadFinishedBlock)(UIImage * image , NSString * filePath);
 
 
 #define QJWeakSelf __weak typeof(self) weakSelf = self

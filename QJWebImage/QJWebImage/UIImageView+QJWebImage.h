@@ -43,7 +43,7 @@
     downloadProgressing : 下载进度过程调用的 block
     downloadFinished    : 下载完成后调用的   block
  */
--(void)qj_setImageWithURL:(NSURL *)imageURL downloadProgressing:(QJDownloadProgressing)downloadProgressing downloadFinished:(QJDownloadFinished)downloadFinished;
+-(void)qj_setImageWithURL:(NSURL *)imageURL downloadProgressing:(QJDownloadProgressingBlock)downloadProgressing downloadFinished:(QJDownloadFinishedBlock)downloadFinished;
 
 /**
     加载图片
@@ -53,7 +53,7 @@
     downloadProgressing : 下载进度过程调用的 block
     downloadFinished    : 下载完成后调用的   block
  */
--(void)qj_setImageWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)placeholder downloadProgressing:(QJDownloadProgressing)downloadProgressing downloadFinished:(QJDownloadFinished)downloadFinished;
+-(void)qj_setImageWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)placeholder downloadProgressing:(QJDownloadProgressingBlock)downloadProgressing downloadFinished:(QJDownloadFinishedBlock)downloadFinished;
 
 
 /**
@@ -63,7 +63,7 @@
     downloadProgressing : 下载进度过程调用的 block
     downloadFinished    : 下载完成后调用的   block
  */
--(void)qj_setImageWithUrlStr:(NSString *)imageUrlStr downloadProgressing:(QJDownloadProgressing)downloadProgressing downloadFinished:(QJDownloadFinished)downloadFinished;
+-(void)qj_setImageWithUrlStr:(NSString *)imageUrlStr downloadProgressing:(QJDownloadProgressingBlock)downloadProgressing downloadFinished:(QJDownloadFinishedBlock)downloadFinished;
 /**
     加载图片
  
@@ -72,6 +72,6 @@
     downloadProgressing : 下载进度过程调用的 block
     downloadFinished    : 下载完成后调用的   block
  */
--(void)qj_setImageWithUrlStr:(NSString *)imageUrlStr placeholderImage:(UIImage *)placeholder downloadProgressing:(QJDownloadProgressing)downloadProgressing downloadFinished:(QJDownloadFinished)downloadFinished;
+-(void)qj_setImageWithUrlStr:(NSString *)imageUrlStr placeholderImage:(UIImage *)placeholder downloadProgressing:(QJDownloadProgressingBlock)downloadProgressing downloadFinished:(QJDownloadFinishedBlock)downloadFinished;
 
 @end

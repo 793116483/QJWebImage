@@ -20,17 +20,17 @@
 
     UIImageView * imageView = [[UIImageView alloc] init];
     imageView.backgroundColor = [UIColor whiteColor];
-    imageView.frame = CGRectMake(10, 100, self.view.frame.size.width - 20, 150);
+    imageView.frame = CGRectMake(10, 50, self.view.frame.size.width - 20, 150);
     [self.view addSubview:imageView];
     
     UIImageView * imageView2 = [[UIImageView alloc] init];
     imageView2.backgroundColor = [UIColor whiteColor];
-    imageView2.frame = CGRectMake(10, 260, self.view.frame.size.width - 20, 150);
+    imageView2.frame = CGRectMake(10, 210, self.view.frame.size.width - 20, 150);
     [self.view addSubview:imageView2];
     
     UIImageView * imageView3 = [[UIImageView alloc] init];
     imageView3.backgroundColor = [UIColor whiteColor];
-    imageView3.frame = CGRectMake(10, 420, self.view.frame.size.width - 20, 150);
+    imageView3.frame = CGRectMake(10, 370, self.view.frame.size.width - 20, 150);
     [self.view addSubview:imageView3];
     
     NSString * testImageURL1 = @"http://www.bz55.com/uploads/allimg/150417/139-15041G02614.jpg";
@@ -42,14 +42,14 @@
     
     [imageView qj_setImageWithUrlStr:testImageURL1];
     [imageView2 qj_setImageWithUrlStr:testImageURL2];
-    [imageView3 qj_setImageWithUrlStr:testImageURL3];
+//    [imageView3 qj_setImageWithUrlStr:testImageURL3];
 
     
-//    [imageView qj_setImageWithURL:[NSURL URLWithString:testImageURL2] placeholderImage:[UIImage imageNamed:@"pic_loadsuc"] downloadProgressing:^(CGFloat curDownloadSize, CGFloat didDownloadSize, CGFloat fileSize) {
-//        NSLog(@"下载进度 当前下载了 = %lf kb, 已经下载了 %lf kb, 文件大小 = %lf kb, 下载百分比 = %lf%%",curDownloadSize , didDownloadSize , fileSize , didDownloadSize / fileSize * 100);
-//    } downloadFinished:^(UIImage *image, NSString *filePath) {
-//        NSLog(@"下载完成 imagePath = %@",filePath);
-//    }];
+    [imageView3 qj_setImageWithURL:[NSURL URLWithString:testImageURL3] placeholderImage:[UIImage imageNamed:@"pic_loadsuc"] downloadProgressing:^(CGFloat curDownloadSize, CGFloat didDownloadSize, CGFloat fileSize) {
+        NSLog(@"下载进度 当前下载了 = %lf kb, 已经下载了 %lf kb, 文件大小 = %lf kb, 下载百分比 = %lf%%",curDownloadSize , didDownloadSize , fileSize , didDownloadSize / fileSize * 100);
+    } downloadFinished:^(UIImage *image, NSString *filePath) {
+        NSLog(@"下载完成 imagePath = %@",filePath);
+    }];
 }
 
 

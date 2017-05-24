@@ -17,8 +17,8 @@
 
 @property (nonatomic , strong)NSOperationQueue * queue ;
 
-@property (nonatomic , copy)QJDownloadProgressing progressingBlock ;
-@property (nonatomic , copy)QJDownloadFinished finishedBlock ;
+@property (nonatomic , copy)QJDownloadProgressingBlock progressingBlock ;
+@property (nonatomic , copy)QJDownloadFinishedBlock finishedBlock ;
 
 @end
 
@@ -29,11 +29,11 @@
     return [[self alloc] init];
 }
 
--(void)setDownloadProgressing:(QJDownloadProgressing)downloadProgressing
+-(void)setDownloadProgressing:(QJDownloadProgressingBlock)downloadProgressing
 {
     self.progressingBlock = downloadProgressing ;
 }
--(void)setDownloadFinished:(QJDownloadFinished)downloadFinished
+-(void)setDownloadFinished:(QJDownloadFinishedBlock)downloadFinished
 {
     self.finishedBlock = downloadFinished ;
 }

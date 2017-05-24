@@ -54,7 +54,7 @@ static const char QJShowProgressViewKey = '\0';
     [self qj_setImageWithUrlStr:imageUrlStr placeholderImage:placeholder downloadProgressing:nil downloadFinished:nil];
 }
 
--(void)qj_setImageWithUrlStr:(NSString *)imageUrlStr downloadProgressing:(QJDownloadProgressing)downloadProgressing downloadFinished:(QJDownloadFinished)downloadFinished
+-(void)qj_setImageWithUrlStr:(NSString *)imageUrlStr downloadProgressing:(QJDownloadProgressingBlock)downloadProgressing downloadFinished:(QJDownloadFinishedBlock)downloadFinished
 {
     if (!imageUrlStr) {
         return ;
@@ -62,13 +62,13 @@ static const char QJShowProgressViewKey = '\0';
     
     [self qj_setImageWithURL:[NSURL URLWithString:imageUrlStr] downloadProgressing:downloadProgressing downloadFinished:downloadFinished];
 }
--(void)qj_setImageWithUrlStr:(NSString *)imageUrlStr placeholderImage:(UIImage *)placeholder downloadProgressing:(QJDownloadProgressing)downloadProgressing downloadFinished:(QJDownloadFinished)downloadFinished
+-(void)qj_setImageWithUrlStr:(NSString *)imageUrlStr placeholderImage:(UIImage *)placeholder downloadProgressing:(QJDownloadProgressingBlock)downloadProgressing downloadFinished:(QJDownloadFinishedBlock)downloadFinished
 {
     [self qj_setImageWithURL:[NSURL URLWithString:imageUrlStr] placeholderImage:placeholder downloadProgressing:downloadProgressing downloadFinished:downloadFinished];
 }
 
 
--(void)qj_setImageWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)placeholder downloadProgressing:(QJDownloadProgressing)downloadProgressing downloadFinished:(QJDownloadFinished)downloadFinished
+-(void)qj_setImageWithURL:(NSURL *)imageURL placeholderImage:(UIImage *)placeholder downloadProgressing:(QJDownloadProgressingBlock)downloadProgressing downloadFinished:(QJDownloadFinishedBlock)downloadFinished
 {
     if ([placeholder isKindOfClass:[UIImage class]]) {
         self.image = placeholder ;
@@ -76,7 +76,7 @@ static const char QJShowProgressViewKey = '\0';
     
     [self qj_setImageWithURL:imageURL downloadProgressing:downloadProgressing downloadFinished:downloadFinished];
 }
--(void)qj_setImageWithURL:(NSURL *)imageURL downloadProgressing:(QJDownloadProgressing)downloadProgressing downloadFinished:(QJDownloadFinished)downloadFinished
+-(void)qj_setImageWithURL:(NSURL *)imageURL downloadProgressing:(QJDownloadProgressingBlock)downloadProgressing downloadFinished:(QJDownloadFinishedBlock)downloadFinished
 {
     if (!imageURL) {
         return ;
@@ -92,17 +92,21 @@ static const char QJShowProgressViewKey = '\0';
     
     QJWeakSelf ;
     
-    QJDownloadProgressing progressingBlock = ^(CGFloat curDownloadSize , CGFloat didDownloadSize , CGFloat fileSize){
-        if (weakSelf.isShowProgressView) {
-            progressView.progressScope = 1.0 * didDownloadSize / fileSize ;
-        }
-        
-        if (downloadProgressing) {
-            downloadProgressing(curDownloadSize , didDownloadSize , fileSize);
-        }
-    };
+    QJDownloadProgressingBlock progressingBlock = downloadProgressing ;
     
-    QJDownloadFinished finished = ^(UIImage * image , NSString * filePath){
+    if (self.isShowProgressView) {
+        progressingBlock = ^(CGFloat curDownloadSize , CGFloat didDownloadSize , CGFloat fileSize){
+            if (weakSelf.isShowProgressView) {
+                progressView.progressScope = 1.0 * didDownloadSize / fileSize ;
+            }
+            
+            if (downloadProgressing) {
+                downloadProgressing(curDownloadSize , didDownloadSize , fileSize);
+            }
+        };
+    }
+    
+    QJDownloadFinishedBlock finished = ^(UIImage * image , NSString * filePath){
         weakSelf.image = image ;
         
         if (downloadFinished) {
