@@ -19,7 +19,7 @@
 
 #define QJColorA(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:a]
 
-#define kBorderWidth 3
+#define kBorderWidth 4
 #define kStrokeColor [UIColor whiteColor] 
 #define kCircleColor QJColorA(210, 210, 210, 1.0)
 
@@ -121,6 +121,7 @@
     CGFloat radian = M_PI * 2.0 * self.progressScope -  M_PI / 2.0 ;
     CGContextAddArc(context, circleX, circleY, radius, - M_PI / 2.0 , radian , 0);
     
+    CGContextSetLineCap(context, kCGLineCapRound);
     // 设置线宽
     CGContextSetLineWidth(context, kBorderWidth);
     
