@@ -34,7 +34,9 @@ static QJFileManeger * _currentFileManager ;
 
 +(NSString *)documentPath
 {
-    return [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
+    NSString *cachesPath = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)lastObject];
+
+    return cachesPath;
 }
 
 +(NSString *)commonFolderPath
